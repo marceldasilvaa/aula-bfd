@@ -1,0 +1,27 @@
+* {
+  font-family: sans-serif;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.exibir {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.exibir h1 {
+  color: darkblue;
+}
+
+.exibir p {
+  font-size: 1.2em;
+}

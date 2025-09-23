@@ -1,0 +1,14 @@
+* {
+    font-family: sans-serif;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 {
+    text-align: center;
+}

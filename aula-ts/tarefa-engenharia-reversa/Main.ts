@@ -3,6 +3,7 @@ const Compra = require("./Compra");
 const Livro = require("./Obras");
 const Filme = require("./Obras");
 const Emprestimo = require("./Emprestimo");
+const Doacoes = require("./Emprestimo");
 const Pessoa = require("./Pessoa");
 const Doador = require("./Pessoa");
 
@@ -16,6 +17,7 @@ const livros: Array<livro> = [];
 const filmes: Array<filme> = [];
 const compras: Array<compra> = [];
 const emprestimos: Array<emprestimo> = [];
+const doacao: Array<doacoes> = [];
 const pessoas: Array<pessoa> = [];
 const doadores: Array<doador> = [];
 
@@ -122,12 +124,19 @@ const adicionarPessoa = () => {
 };
 
 // const listarPessoas serve para imprimir na tela cada uma das pessoas salvas na lista. Usando o método pessoa.imprimirDetalhes(), mostrando o nome, CPF e data de nascimento da pessoa que também vem do arquivo Pessoa.js.
-
 const listarPessoas = () => {
   console.log("Lista de Pessoas:");
   pessoas.forEach((pessoa, index) => {
     console.log(`\nPessoa ${index + 1}:`);
     pessoa.imprimirDetalhes();
+  });
+};
+
+const listarDoadores = () => {
+  console.log("Lista de Doadores:");
+  doadores.forEach((doador, index) => {
+    console.log(`\nDoadores ${index + 1}:`);
+    doador.imprimirDetalhes();
   });
 };
 // const adicionarCompra serve para listar os livros disponíveis no sistema para compra e realizar a venda dos mesmos. Passando os parâmetros escolhidos pelo usuário e adicionando a compra à uma lista.
@@ -157,6 +166,50 @@ const listarCompras = () => {
     console.log(`\nCompra ${index + 1}:`);
     compra.imprimirDetalhes();
   });
+};
+
+const adicionarAlgo = () => {
+  console.log("O que você quer saber?");
+  console.log("1. Empréstimo");
+  console.log("2. Doar");
+
+  const escolhido = perguntar("Digite o número que deseja: ");
+
+  if (escolhido !== null && escolhido === "1") {
+    console.log("---------------------------------");
+    console.log("Escolha o que quer fazer");
+    console.log("1. Adicionar empréstimo");
+    console.log("2. Listar empréstimos");
+    console.log("---------------------------------");
+
+    const oQueFazer = perguntar("Escolha uma das opções: ");
+
+    if (oQueFazer !== null && oQueFazer === "1") {
+      adicionarEmprestimo();
+    } else if (oQueFazer !== null && oQueFazer === "2") {
+      listarEmprestimos();
+    } else {
+      console.error("Valor inválido!");
+    }
+  } else if (escolhido !== null && escolhido === "2") {
+    console.log("---------------------------------");
+    console.log("Escolha o que quer fazer");
+    console.log("1. Adicionar Doação");
+    console.log("2. Listar doações");
+    console.log("---------------------------------");
+
+    const oQueFazer = perguntar("Escolha uma das opções: ");
+
+    if (oQueFazer !== null && oQueFazer === "1") {
+      adicionarDoacoes();
+    } else if (oQueFazer !== null && oQueFazer === "2") {
+      listarDoacoes();
+    } else {
+      console.error("Valor inválido!");
+    }
+  } else {
+    console.error("Valor inválido!");
+  }
 };
 
 // const adicionarEmprestimo serve para mostrar os livros disponíveis para empréstimo e mostrar também a lista de usuários no sistema para a pessoa se identificar, junto com os dias de empréstimo. E assim é adicinado o empréstimo à lista de empréstimo, vindo do arquivo Emprestimos.js.
@@ -189,6 +242,32 @@ const listarEmprestimos = () => {
     emprestimo.imprimirDetalhes();
   });
 };
+
+const adicionarDoacoes = () => {
+  listarDoacoes();
+  const nomeDoador = perguntar("Qual seu nome? ");
+  const cpfDoador = perguntar("Qual seu CPF? ");
+  const nasDoador = perguntar("Qual sua data de nascimento? ");
+  const obraADoar = perguntar("Qual obra você quer doar? ");
+  const dataDoacao = perguntar("Digite a data de hoje. Ex: dd/mm/aa: ");
+
+  const novoDoador = new Doador(nomeDoador, cpfDoador, nasDoador, 0);
+  novoDoador.adicionarDoacao();
+  doadores.push(novoDoador);
+
+  const doacoes = new Doacoes(novoDoador, obraADoar, dataDoacao);
+  doacao.push(doacoes);
+
+  console.log("Doação adicionada com sucesso!");
+};
+// const listarEmprestimos serve para imprimir na tela as informações de cada empréstimo salvo na lista. Usando o método emprestimo.imprimirDetalhes(), vindo do arquivo Emprestimo.js.
+const listarDoacoes = () => {
+  console.log("Lista de Doações:");
+  doacao.forEach((doados, index) => {
+    console.log(`\nDoação ${index + 1}:`);
+    doados.imprimirDetalhes();
+  });
+};
 // const devolverLivro serve para imprimir os empréstimos em aberto no sistema, dando a escolha ao usuário de selecionar qual ele quer devolver, utilizando o número do empréstimo e os dias. E logo após fazendo o cálculo
 //  da multa a ser paga pelo usuário (caso ele tenha ultrapassado os dias de empréstimo selecionado), passando o número de dias para o método calcularMulta(), que vem do Emprestimo.js.
 const devolverLivro = () => {
@@ -212,8 +291,8 @@ const menu = () => {
   console.log("3. Listar Pessoas");
   console.log("4. Adicionar Compra");
   console.log("5. Listar Compras");
-  console.log("6. Adicionar Empréstimo");
-  console.log("7. Listar Empréstimos");
+  console.log("6. Emprestar ou Doar");
+  console.log("7. Listar Doadores");
   console.log("8. Devolver Livro");
   console.log("0. Sair");
   const escolha = prompt("Escolha uma opção: ");
@@ -235,10 +314,10 @@ const menu = () => {
       listarCompras();
       break;
     case "6":
-      adicionarEmprestimo();
+      adicionarAlgo();
       break;
     case "7":
-      listarEmprestimos();
+      listarDoadores();
       break;
     case "8":
       devolverLivro();

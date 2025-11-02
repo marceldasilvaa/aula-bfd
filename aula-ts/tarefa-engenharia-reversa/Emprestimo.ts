@@ -34,14 +34,22 @@ class emprestimo {
 }
 
 class doacoes {
-  doador: string;
+  doador: any;
   obraDoada: string;
   dataDoacao: string;
 
-  constructor(doador: string, obraDoada: string, dataDoacao: string) {
+  constructor(doador: doador, obraDoada: string, dataDoacao: string) {
     this.doador = doador;
     this.obraDoada = obraDoada;
     this.dataDoacao = dataDoacao;
+  }
+
+  imprimirDetalhes() {
+    console.log("---------------------");
+    console.log(`Obra doada: ${this.obraDoada}`);
+    console.log(`Data da doação: ${this.dataDoacao}`);
+    console.log(`Doador: ${this.doador.nome}`);
+    console.log("---------------------");
   }
 }
 

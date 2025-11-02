@@ -31,6 +31,19 @@ class doador extends pessoa {
     super(nome, cpf, dataNascimento);
     this.qtdDoacao = qtdDoacao;
   }
+
+  adicionarDoacao() {
+    this.qtdDoacao += 1;
+  }
+
+  imprimirDetalhes() {
+    console.log("---------------------");
+    console.log(`Nome: ${this.nome}`);
+    console.log(`CPF: ${this.cpf}`);
+    console.log(`Data de Nascimento: ${this.dataNascimento}`);
+    console.log(`Quantidade de doações: ${this.qtdDoacao}`);
+    console.log("---------------------");
+  }
 }
 
 module.exports = pessoa;

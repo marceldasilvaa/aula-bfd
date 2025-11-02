@@ -1,0 +1,11 @@
+FUNCIONAIS:
+
+RF1 - O sistema deve deixar uma pessoa criar um usuario novo.
+RF2 - Deve tambem deixar as empresas cadastrar os livros.
+RF3 - Permitir o usuario fazer uma compra ou empréstimo.
+RF4 - Permitir o calculo de tarifas de atraso.
+
+NÃO-FUNCIONAIS
+
+-Desempenho: 
+-Usuabilidade

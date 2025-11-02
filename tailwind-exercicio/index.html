@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="bg-black md:bg-[#10172a] h-[100vh] md:flex">
+      <div
+        class="bg-black h-100 p-6 max-w-md m-auto md:max-w-md md:pb-20 md:pt-10 md:px-10 md:rounded-md"
+      >
+        <h1 class="text-white text-3xl md:text-4xl font-bold">Entrar</h1>
+        <div class="flex flex-col gap-4 mt-6">
+          <label for="email">
+            <input
+              type="email"
+              placeholder="Email ou número de celular"
+              class="bg-transparent border border-gray-600 p-3 w-[95%] md:w-full rounded-sm text-gray"
+            />
+          </label>
+          <label for="email">
+            <input
+              type="email"
+              placeholder="Senha"
+              class="bg-transparent border border-gray-600 p-3 w-[95%] md:w-full rounded-sm text-gray"
+            />
+          </label>
+        </div>
+        <div
+          class="flex flex-col gap-4 text-center text-white w-[95%] md:w-full mt-4"
+        >
+          <a href="#" class="bg-red-600 font-semibold py-2 rounded-sm"
+            >Entrar</a
+          >
+          <p class="text-gray-300 font-semibold">OU</p>
+          <a href="#" class="bg-gray-700 font-semibold py-2 rounded-sm"
+            >Usar um código de acesso</a
+          >
+          <a href="#" class="underline mb-4">Esqueceu a senha?</a>
+        </div>
+        <div class="w-[95%] text-white">
+          <label for="check">
+            <input type="checkbox" class="bg-transparent border border-gray-600"/>
+            <span>Lembre-se de mim</span>
+          </label>
+          <p class="text-gray-300 mt-4">
+            Primeira vez aqui?
+            <a href="#" class="font-bold text-white hover:underline"
+              >Assine agora.</a
+            >
+          </p>
+          <p class="text-sm text-gray-400 font-semibold mt-4">
+            Esta página é protegida pelo Google reCAPTCHA para garantir que você
+            não é um robô.
+          </p>
+          <a href="#" class="text-sm text-blue-500 underline">Saiba mais.</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
